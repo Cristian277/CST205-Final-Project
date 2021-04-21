@@ -1,0 +1,35 @@
+
+<html lang="en">
+    <head>
+        {{ bootstrap.load_css() }} 
+        {{ bootstrap.load_js() }}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Website</title>
+    </head>
+
+    <body>
+        <div> 
+            <br>
+            <h3>{{my_list[0]['title']}} by {{my_list[0]['flickr_user']}}</h3>
+            <br>
+
+            <img
+            src="/static/images/{{my_list[0]['id']}}.jpg"
+            class="rounded img_fluid"
+            >
+            <br><br>
+            <h5>{{my_dictionary['mode']}} image in {{my_dictionary['format']}} with width 
+                {{my_dictionary['width']}} and height {{my_dictionary['height']}}
+            </h5>
+
+            <br><br>
+            <a href="{{ url_for('hello')}}">
+                <h5>Back to Home Page</h5>
+            </a>
+        
+        </div>
+    </body>
+    
+    </html>

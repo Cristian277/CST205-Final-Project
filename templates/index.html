@@ -1,0 +1,31 @@
+
+<html lang="en">
+    <head>
+        {{ bootstrap.load_css() }} 
+        {{ bootstrap.load_js() }}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Website</title>
+    </head>
+    <body>
+        <div> 
+            <br>
+            <h1>CST205 Random Picture Gallery</h1>
+            <br>
+            {% for i in range(0,3)%}
+            <a href="{{ url_for('p2', imageID = my_list[i]['id']) }}">
+                <h5>{{my_list[i]['title']}}</h5> 
+            </a>
+            <img
+            src="/static/images/{{ my_list[i]['id'] }}.jpg" width="250"
+            class="img-fluid rounded"
+            >
+            <br><br>
+            {% endfor %}
+            
+        </div>
+    
+    </body>
+    
+    </html>
