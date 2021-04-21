@@ -10,8 +10,8 @@
 - Github Link: https://github.com/Cristian277
 
 ### Victor Cuin
-- Email: 
-- Phone: 
+- Email: vcuin@csumb.edu  
+- Phone:  
 - Github Link: https://github.com/vcuin97
 
 ### Christian Jimenez
