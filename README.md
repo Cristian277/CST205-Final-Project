@@ -12,9 +12,9 @@
 ### Victor Cuin
 - Email: 
 - Phone: 
-- Github Link: 
+- Github Link: https://github.com/vcuin97
 
 ### Christian Jimenez
 - Email: 
 - Phone: 
-- Github Link: 
+- Github Link: https://github.com/christianJimenez1999
