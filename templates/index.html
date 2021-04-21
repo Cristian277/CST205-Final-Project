@@ -11,18 +11,8 @@
     <body>
         <div> 
             <br>
-            <h1>CST205 Random Picture Gallery</h1>
+            <h1>CST205 Movie Search</h1>
             <br>
-            {% for i in range(0,3)%}
-            <a href="{{ url_for('p2', imageID = my_list[i]['id']) }}">
-                <h5>{{my_list[i]['title']}}</h5> 
-            </a>
-            <img
-            src="/static/images/{{ my_list[i]['id'] }}.jpg" width="250"
-            class="img-fluid rounded"
-            >
-            <br><br>
-            {% endfor %}
             
         </div>
     
