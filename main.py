@@ -18,12 +18,13 @@ endpoint = 'https://api.themoviedb.org/3/movie/'
 @app.route('/')
 def hello():
     try:
-        response = requests.get("https://api.themoviedb.org/3/movie/550?api_key=c5d329154c6814866283f9572098cff2")
-        print(response.json())
+        response = requests.get("https://api.themoviedb.org/3/movie/popular/?api_key=c5d329154c6814866283f9572098cff2")
+        #print(response.json())
+        data = response.json()
     except:
         print('please try again')
 
-    return render_template('index.html')
+    return render_template('index.html',data=data)
 
 
 #Second Page Route
