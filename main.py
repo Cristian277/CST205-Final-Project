@@ -12,19 +12,24 @@ parameters = {
   'api_key': my_key,
 }
 endpoint = 'https://api.themoviedb.org/3/movie/'
+<img src= "'/images/ + {{data['results'][i]['poster_path']}} + '"/>
 """
+
 
 #Home Route
 @app.route('/')
 def hello():
+    listOfImages = []
     try:
         response = requests.get("https://api.themoviedb.org/3/movie/popular/?api_key=c5d329154c6814866283f9572098cff2")
-        #print(response.json())
+        print(response.json())
         data = response.json()
+        for i in range(0,9):
+            listOfImages.append("https://image.tmdb.org/t/p/w300" + data['results'][i]['poster_path'])
     except:
         print('please try again')
 
-    return render_template('index.html',data=data)
+    return render_template('index.html',data=data, images = listOfImages)
 
 
 #Second Page Route

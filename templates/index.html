@@ -12,7 +12,18 @@
         <div> 
             <br>
             <h1>CST205 Movie Search</h1>
+            <br><br>
+            <h2>Popular Movies</h2>
+            <hr>
             <br>
+            {% for i in range(0,9)%}
+            <h3>{{data['results'][i]['original_title']}}</h3>
+            <h5>Overview: </h5>
+            <h5>{{data['results'][i]['overview']}}</h5>
+            <br><br>
+            <img src = "{{images[i]}}"/>
+            <br><br>
+            {% endfor %}
             
         </div>
     
