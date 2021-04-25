@@ -8,11 +8,22 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Website</title>
     </head>
-    <body>
+    <body style="background-image: linear-gradient(white, #EBA487, SkyBlue);">
         <div> 
             <br>
             <h1>CST205 Movie Search</h1>
+            <br><br>
+            <h2>Popular Movies</h2>
+            <hr>
             <br>
+            {% for i in range(0,9)%}
+            <h3><i>{{data['results'][i]['original_title']}}</i></h3>
+            <h5>Overview: </h5>
+            <h5>{{data['results'][i]['overview']}}</h5>
+            <br><br>
+            <p style="text-align:center"><a href="{{url_for('p2', title=data['results'][i]['original_title'], desc=data['results'][i]['overview'], release=data['results'][i]['release_date'], popularity=data['results'][i]['popularity'], image=images[i])}}"><img src = "{{images[i]}}"/></a></p>
+            <br><br>
+            {% endfor %}
             
         </div>
     
