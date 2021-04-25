@@ -9,13 +9,18 @@
         <title>Website</title>
     </head>
 
-    <body>
+    <body style="background-image: linear-gradient(white, gray);">
         <div> 
-            <br>
-            <h1>Welcome to the Second Page!</h1>
-            <br>
+            <p>Movie Information </p>
             
+            <h1><i>{{title}}</i></h1>
+            <p style="text-align:center;"><img src="{{image}}" alt="{{title}}" class="rounded img_fluid"></p>
+            <h3>Overview:</h3>
+            <h4>{{desc}}</h4>
+            <h3>Release: {{release}}</h3>
+            <h3>Popularity: {{popularity}}</h3>
+            <p style="text-align:right"><a href="{{url_for('hello')}}" class="btn btn-light" style="font-size:25px;">Home</a></p>
         </div>
     </body>
     
-    </html>
+</html>
