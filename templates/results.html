@@ -14,18 +14,10 @@
             <h1>CST205 Movie Search</h1>
             <br><br>
 
-            {% from "_formhelpers.html" import render_field %}
-            <form method="post">
-            <dl>
-            {{ render_field(form.search) }}
-            <input type="submit" value="Search">
-            </dl>
-            </form>
-
             <h2>Popular Movies</h2>
             <hr>
             <br>
-            {% for i in range(0,9)%}
+            {% for i in range(0,sizeOfList)%}
             <h3><i>{{data['results'][i]['original_title']}}</i></h3>
             <h5>Overview: </h5>
             <h5>{{data['results'][i]['overview']}}</h5>
@@ -33,6 +25,10 @@
             <p style="text-align:center"><a href="{{url_for('p2', title=data['results'][i]['original_title'], desc=data['results'][i]['overview'], release=data['results'][i]['release_date'], popularity=data['results'][i]['popularity'], image=images[i])}}"><img src = "{{images[i]}}"/></a></p>
             <br><br>
             {% endfor %}
+
+            <a href="{{ url_for('hello')}}">
+                <h5>Back to Home Page</h5>
+            </a>
             
         </div>
     
