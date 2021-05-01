@@ -2,39 +2,34 @@ import requests, json
 from pprint import pprint
 from flask import Flask, render_template, redirect, url_for, request 
 from flask_bootstrap import Bootstrap
+from wtforms import Form, StringField, SelectField
 
 app = Flask(__name__)
 boostrap = Bootstrap(app)
 
-"""
-URL FOR MOVIE SEARCH NEED TO REPLACE USERS TYPED IN STRING WITH %20 FOR THE SPACES LIKE IRON MAN WOULD BE
-IRON%20MAN OR MORTAL KOMBAT MORTAL%20KOMBAT THIS ALSO RETURNS ALL MOVIES THAT HAVE "MORTAL KOMBAT" SO YOU 
-MIGHT HAVE TO WATCH OUT FOR SIZE OF THE LIST AND PRINT DEPENDING ON THAT SO YOU DON'T PRINT GARBAGE VALUES 
-ON THE HTML PAGE
-    try:
-        response = requests.get("https://api.themoviedb.org/3/search/movie?api_key=c5d329154c6814866283f9572098cff2&language=en-US&query=mortal%20kombat&page=1&include_adult=true")
-        print(response.json())
-    except:
-        print('please try again')
-"""
-
+class MovieSearchForm(Form):
+    search = StringField('Search for Movie: ')
 
 #Home Route
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def hello():
+
+    search = MovieSearchForm(request.form)
+
+    if request.method == 'POST':
+        return search_results(search)
+
     listOfImages = []
 
     try:
         response = requests.get("https://api.themoviedb.org/3/movie/popular/?api_key=c5d329154c6814866283f9572098cff2")
-        # print(response.json())
         data = response.json()
         for i in range(0,9):
             listOfImages.append("https://image.tmdb.org/t/p/w300" + data['results'][i]['poster_path'])
-            #print(listOfImages)
     except:
         print('please try again')
 
-    return render_template('index.html',data=data, images = listOfImages)
+    return render_template('index.html', data=data, images = listOfImages, form=search)
 
 
 #Second Page Route
@@ -47,5 +42,28 @@ def p2():
     image = request.args.get('image', None)
     return render_template('page2.html', title = title, desc = description, release = release, popularity = popularity, image = image)
 
+
+@app.route('/results')
+def search_results(search):
+
+    listOfImages = []
+
+    search_string = search.data['search'] #NAME OF THE MOVIE
+    newSearchString = search_string.replace(" ","%20")
+
+    #TRYING TO REQUEST FROM THE API IF IT WORKS THEN RENDER THE RESULTS PAGE AND PASS IN THE RESULT
+    response = requests.get("https://api.themoviedb.org/3/search/movie?api_key=c5d329154c6814866283f9572098cff2&query=" + newSearchString + "&page=1&include_adult=true")
+    print(response.json())
+    data = response.json()
+    length = len(data['results'])
+    print(length)
+
+    for i in range(0,length):
+        if not data['results'][i]['poster_path'] is None:
+            listOfImages.append("https://image.tmdb.org/t/p/w300" + data['results'][i]['poster_path'])
+
+        
+ 
+    return render_template('results.html', data=data, images = listOfImages, sizeOfList=length)
 
 
