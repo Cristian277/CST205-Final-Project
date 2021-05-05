@@ -1,6 +1,6 @@
 # CST205 - Final Project 
 
-# Web App that allows users to search and save movies into their account.
+# Web App using Flask that allows users to search and save movies into their account.
 
 # Contributors:
 
