@@ -1,3 +1,7 @@
+#CST205
+#Team 29 
+#Cristian Arredondo, Victor Cuin, Christian Jimenez 
+#This file has all the routes that lead to the html files 
 import requests, json
 from pprint import pprint
 from flask import Flask, render_template, redirect, url_for, request 
