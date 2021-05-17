@@ -2,6 +2,8 @@
 
 # Web App using Flask that allows users to search and save movies into their account.
 
+#Trello: https://trello.com/b/9a2LyLEf/project
+
 # Contributors:
 
 ### Cristian Arredondo
